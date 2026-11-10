@@ -101,8 +101,8 @@ Each folder has its own README with the equations and output-file formats.
 ## Quick start
 
 ```bash
-git clone https://github.com/Carmeisel101/RealEngineCycle_TurboProp.git
-cd RealEngineCycle_TurboProp
+git clone https://github.com/Carmeisel101/pt6ish.git
+cd pt6ish
 make setup     # creates .venv and installs requirements.txt
 make           # runs tasks 2-6 and redraws the T-s diagram
 ```
@@ -132,7 +132,7 @@ Without `make`, install with `pip install -r requirements.txt` and run each scri
 ## Repository layout
 
 ```text
-RealEngineCycle_TurboProp/
+pt6ish/
 ├── docs/            # README graphics
 ├── task1/           # cycle analysis, gas tables, T-s diagram
 ├── task2/           # axial compressor mean-line design
