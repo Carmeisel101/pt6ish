@@ -32,7 +32,7 @@ def step1_3loop(w_c_n, x, N_cr, gamma, pi_c, eff_com, N_n, TIT, m_ref, eff_combu
     eq1 = Eq(pi_c_star1, df['pi_c_star'][0])
     eq2 = Eq(pi_c_star2, df['pi_c_star'][1])
     eq3 = Eq(pi_c_star3, df['pi_c_star'][2])
-    sol = solve((eq1, eq2, eq3), (T1, T2, T3))
+    sol = solve((eq1, eq2, eq3), (T1, T2, T3), dict=True)[0]
     df['T_03'] = [sol[T1], sol[T2], sol[T3]]
 
     h_03_1 = r*stoich_tabT(float(df['T_03'][0])) + q*air_tabT(float(df['T_03'][0]))
@@ -84,7 +84,7 @@ def OL_repeater(pi_c_star_crt, pi_d, eff_combust, AreaRatio, gamma_g, eff_turb, 
     eq1 = Eq(pi_c_star1, df['pi_c'][0])
     eq2 = Eq(pi_c_star2, df['pi_c'][1])
     eq3 = Eq(pi_c_star3, df['pi_c'][2])
-    sol = solve((eq1, eq2, eq3), (T1, T2, T3))
+    sol = solve((eq1, eq2, eq3), (T1, T2, T3), dict=True)[0]
     df['T_03_solve'] = [sol[T1], sol[T2], sol[T3]]
 
 

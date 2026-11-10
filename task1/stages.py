@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from math import *
-from winGasProp import GasProp
+from gasprop import GasProp
 from Iterations import *
 
 def stagea(Ta, pa):
