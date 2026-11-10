@@ -13,35 +13,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from tableGasProp import load_table  # cleaned air / combustion-product tables
+
 R_AIR = 0.28716  # kJ/kg-K, same constant used throughout stages.py
 MIN_L = 14.66    # stoichiometric air/fuel ratio
-
-
-def load_table(path):
-    """
-    Load a gas table (T [K], h [kJ/kg], s at 1 bar [kJ/kg-K]).
-
-    The CSV tables were transcribed by hand, so a few enthalpy entries contain
-    typos and air_tab.csv only lists entropy up to 473 K. Single-point spikes in
-    h are replaced by the local median, and s(T) is rebuilt from the cleaned h
-    via ds = dh / T (exact for an ideal gas at constant pressure), anchored to
-    the first tabulated entropy value.
-    """
-    tab = pd.read_csv(path, index_col=0).rename(columns=lambda c: c.strip())
-    tab = tab.dropna(subset=['T', 'h']).reset_index(drop=True)
-    T, h = tab['T'].to_numpy(), tab['h'].to_numpy(copy=True)
-    # A typo at point i shows up as the largest second difference around i;
-    # replace it with the average of its neighbours, worst first, until clean.
-    for _ in range(100):
-        resid = np.abs(h[1:-1] - 0.5 * (h[:-2] + h[2:]))
-        i = int(np.argmax(resid))
-        if resid[i] < 0.6:
-            break
-        h[i + 1] = 0.5 * (h[i] + h[i + 2])
-    tab['h'] = h
-    T_mid = 0.5 * (T[1:] + T[:-1])
-    tab['s'] = tab['s'].iloc[0] + np.concatenate([[0.0], np.cumsum(np.diff(h) / T_mid)])
-    return tab
 
 
 air = load_table('air_tab.csv')

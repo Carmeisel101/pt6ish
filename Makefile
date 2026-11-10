@@ -2,8 +2,10 @@
 #
 #   make setup    create .venv and install requirements.txt
 #   make          run tasks 2-6 and the T-s diagram from the committed Task 1 results
-#   make full     also re-run the Task 1 cycle analysis first (needs the gas-properties program)
+#   make full     also re-run the Task 1 cycle analysis first (falls back to the gas tables
+#                 when the compiled gas-properties program cannot run on this machine)
 #   make taskN    run a single task (and the tasks it depends on)
+#   make test     check the table-based gas-properties fallback against the compiled program
 #
 # Plots are rendered headless by default. Add SHOW=1 to open the plot windows:
 #   make task4 SHOW=1
@@ -19,10 +21,10 @@ else
 endif
 
 .DEFAULT_GOAL := all
-.PHONY: help setup all full cycle ts task1 task2 task3 task4 task5 task6 clean distclean
+.PHONY: help setup all full cycle ts test task1 task2 task3 task4 task5 task6 clean distclean
 
 help:
-	@sed -n '3,10p' Makefile | sed 's/^# \{0,1\}//'
+	@sed -n '3,12p' Makefile | sed 's/^# \{0,1\}//'
 
 # ---------------------------------------------------------------- environment
 $(PY):
@@ -34,16 +36,22 @@ setup: $(PY)
 
 # ---------------------------------------------------------------- pipelines
 all: task2 task3 task4 task5 task6 ts
-	@echo "Done: tasks 2-6 and the T-s diagram (Task 1 results taken from task1/results*.csv)."
+	@echo "Done: tasks 2-6 and the T-s diagram."
 
 full: cycle all
 
 # ---------------------------------------------------------------- Task 1
 # The cycle analysis calls the course's compiled gas-properties program
 # (Windows build, or the macOS x86-64 build that needs gfortran's runtime).
+# Where that program cannot run, task1/gasprop.py falls back to the gas tables;
+# set GASPROP=fortran or GASPROP=tables to force one (e.g. make full GASPROP=tables).
 cycle task1: | $(PY)
 	@echo "==> Task 1: real-gas cycle analysis"
 	cd task1 && $(RUN) main.py
+
+test: | $(PY)
+	@echo "==> Task 1: gas-properties fallback validation"
+	cd task1 && $(RUN) test_gasprop.py
 
 ts: | $(PY)
 	@echo "==> Task 1: T-s diagram"
