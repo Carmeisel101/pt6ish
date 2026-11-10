@@ -1,5 +1,5 @@
 import pandas as pd
-from winGasProp import GasProp
+from gasprop import GasProp
 import numpy as np
 from sympy import Eq, var, solve
 

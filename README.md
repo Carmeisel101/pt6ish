@@ -103,18 +103,22 @@ Each folder has its own README with the equations and output-file formats.
 ```bash
 git clone https://github.com/Carmeisel101/RealEngineCycle_TurboProp.git
 cd RealEngineCycle_TurboProp
-pip install numpy pandas matplotlib sympy openpyxl
+make setup     # creates .venv and installs requirements.txt
+make           # runs tasks 2-6 and redraws the T-s diagram
 ```
 
-Run a task from inside its folder, since paths are relative:
+| Command | What it runs |
+|---|---|
+| `make` | Tasks 2 → 3 → 5 and 2 → 6 → 4, plus the T-s diagram, starting from the committed Task 1 results |
+| `make full` | Re-runs the Task 1 cycle analysis first, then everything above |
+| `make task4` | A single task, plus the tasks it depends on |
+| `make task6 SHOW=1` | Opens the plot windows instead of rendering headless |
+| `make help` | Lists the targets |
 
-```bash
-cd task1 && python main.py          # cycle analysis -> results.csv, results2.csv
-python ts_diagram.py                # T-s diagram   -> images/Ts_diagram.png
-```
+Without `make`, install with `pip install -r requirements.txt` and run each script from inside its task folder (paths are relative), for example `cd task1 && python ts_diagram.py`.
 
 > [!NOTE]
-> Gas properties come from a course-provided Fortran program wrapped in Python. `task1/main.py` uses the Windows build (`winGasProp.py`); on macOS, switch the import to `macGasProp.py` (x86-64, runs under Rosetta on Apple Silicon). Task 5 runs on the Texas A&M `jp1` cluster; see [task5/README.md](task5/README.md).
+> Task 1 calls a course-provided Fortran gas-properties program, embedded as a Windows build (`winGasProp.py`) and a macOS x86-64 build (`macGasProp.py`); `task1/gasprop.py` picks the right one. The macOS build needs gfortran's runtime library from an Intel Homebrew `gcc` install, so `make full` may not run on every machine; the rest of the pipeline uses only Python. Task 5's CFD solver runs on the Texas A&M `jp1` cluster; see [task5/README.md](task5/README.md).
 
 ## Reports
 

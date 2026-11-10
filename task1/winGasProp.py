@@ -118,7 +118,7 @@ def write_exe():
     with open("GPexe", "wb") as f:
         for i in exe:
             f.write(i+b"\n")
-    subprocess.Popen(["chmod", "777", "GPexe"])
+    os.chmod("GPexe", 0o755)  # synchronous, so the program is executable before it runs
 
 def remove_exe():
     os.remove("GPexe")

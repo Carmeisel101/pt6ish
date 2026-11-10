@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from winGasProp import GasProp
+from gasprop import GasProp
 from stages import *
 
 
