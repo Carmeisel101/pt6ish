@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 460" width="960" height="460" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>PT6A-114 station numbering</title>
+  <desc>Schematic half-section of the reverse-flow PT6A-114 turboprop with the thermodynamic station numbers used in the cycle code.</desc>
+  <style>
+    .bg      { fill: #ffffff; }
+    .ink     { fill: #1f2933; }
+    .muted   { fill: #52606d; }
+    .casing  { fill: none; stroke: #3e4c59; stroke-width: 2; stroke-linejoin: round; }
+    .metal   { fill: #cbd2d9; stroke: #3e4c59; stroke-width: 1.2; }
+    .rotor   { fill: #7b8794; stroke: #3e4c59; stroke-width: 1; }
+    .stator  { fill: #e4e7eb; stroke: #3e4c59; stroke-width: 1; }
+    .hot     { fill: url(#flame); stroke: #b44d12; stroke-width: 1.2; }
+    .hotblade{ fill: #e8a87c; stroke: #8d3a0c; stroke-width: 1; }
+    .gearbox { fill: #e4e7eb; stroke: #3e4c59; stroke-width: 1.2; }
+    .prop    { fill: #3e4c59; }
+    .flow    { fill: none; stroke: #2680c2; stroke-width: 2.4; stroke-dasharray: 7 5; }
+    .flowtxt { fill: #2680c2; font-size: 12px; font-weight: 600; }
+    .exflow  { fill: none; stroke: #d64545; stroke-width: 2.4; stroke-dasharray: 7 5; }
+    .station { stroke: #9aa5b1; stroke-width: 1; stroke-dasharray: 3 4; }
+    .stbadge { fill: #1f2933; }
+    .sttxt   { fill: #ffffff; font-size: 12px; font-weight: 700; }
+    .shaft1  { stroke: #2680c2; stroke-width: 4; stroke-linecap: round; }
+    .shaft2  { stroke: #c65d21; stroke-width: 4; stroke-linecap: round; }
+    .center  { stroke: #9aa5b1; stroke-width: 1; stroke-dasharray: 12 4 2 4; }
+    .lbl     { fill: #323f4b; font-size: 12px; text-anchor: middle; }
+    .lblsm   { fill: #616e7c; font-size: 10.5px; text-anchor: middle; }
+    .screen  { stroke: #52606d; stroke-width: 2; stroke-dasharray: 2 3; }
+    .arrowfill { fill: #2680c2; }
+    .arrowfill2 { fill: #d64545; }
+    @media (prefers-color-scheme: dark) {
+      .bg      { fill: #0d1117; }
+      .ink     { fill: #e6edf3; }
+      .muted   { fill: #9aa5b1; }
+      .casing  { stroke: #c9d1d9; }
+      .metal   { fill: #30363d; stroke: #c9d1d9; }
+      .rotor   { fill: #8b949e; stroke: #c9d1d9; }
+      .stator  { fill: #21262d; stroke: #c9d1d9; }
+      .gearbox { fill: #21262d; stroke: #c9d1d9; }
+      .prop    { fill: #c9d1d9; }
+      .flow    { stroke: #58a6ff; }
+      .flowtxt { fill: #58a6ff; }
+      .arrowfill { fill: #58a6ff; }
+      .exflow  { stroke: #ff7b72; }
+      .arrowfill2 { fill: #ff7b72; }
+      .station { stroke: #484f58; }
+      .stbadge { fill: #e6edf3; }
+      .sttxt   { fill: #0d1117; }
+      .shaft1  { stroke: #58a6ff; }
+      .center  { stroke: #484f58; }
+      .lbl     { fill: #c9d1d9; }
+      .lblsm   { fill: #8b949e; }
+      .screen  { stroke: #8b949e; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="flame" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#fde6b8"/>
+      <stop offset="0.55" stop-color="#f7a35c"/>
+      <stop offset="1" stop-color="#e05d2c"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowfill"/>
+    </marker>
+    <marker id="arr2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowfill2"/>
+    </marker>
+
+    <!-- Upper half of the engine; the lower half is a mirror image -->
+    <g id="half">
+      <!-- propeller blade + spinner -->
+      <path class="prop" d="M58,200 L58,60 Q64,44 72,60 L76,200 Z" opacity="0.9"/>
+      <path class="metal" d="M30,200 Q32,160 70,150 L84,150 L84,200 Z"/>
+      <!-- reduction gearbox -->
+      <rect class="gearbox" x="86" y="128" width="108" height="72" rx="6"/>
+      <circle class="metal" cx="118" cy="160" r="16"/>
+      <circle class="metal" cx="160" cy="168" r="10"/>
+      <!-- exhaust duct + stack -->
+      <path class="casing" d="M196,128 L210,108 L284,108"/>
+      <path class="metal" d="M214,108 L186,52 L240,52 L262,108 Z"/>
+      <!-- power turbine (rotor) and its vane -->
+      <rect class="hotblade" x="290" y="110" width="12" height="62" rx="2"/>
+      <rect class="stator"   x="309" y="108" width="9"  height="64" rx="2"/>
+      <!-- compressor turbine (rotor) and its vane -->
+      <rect class="hotblade" x="330" y="104" width="12" height="68" rx="2"/>
+      <rect class="stator"   x="349" y="102" width="9"  height="70" rx="2"/>
+      <!-- turbine casing -->
+      <path class="casing" d="M284,108 L322,104 L364,98 L374,72"/>
+      <!-- combustor: outer case + flame tube -->
+      <path class="casing" d="M374,72 L560,72 L566,84"/>
+      <rect class="hot" x="384" y="88" width="160" height="58" rx="26"/>
+      <!-- centrifugal impeller + diffuser -->
+      <path class="metal" d="M566,84 L604,84 L610,92 L572,92 Z"/>
+      <path class="rotor" d="M652,174 L652,160 Q616,154 604,96 L586,96 L586,174 Z"/>
+      <!-- axial stages: rotor / stator x3 -->
+      <rect class="rotor"  x="664" y="122" width="10" height="52" rx="2"/>
+      <rect class="stator" x="682" y="121" width="8"  height="53" rx="2"/>
+      <rect class="rotor"  x="700" y="119" width="10" height="55" rx="2"/>
+      <rect class="stator" x="718" y="118" width="8"  height="56" rx="2"/>
+      <rect class="rotor"  x="736" y="116" width="10" height="58" rx="2"/>
+      <rect class="stator" x="754" y="114" width="8"  height="60" rx="2"/>
+      <path class="casing" d="M610,92 L640,104 L662,118 L770,110"/>
+      <!-- inlet plenum + screen -->
+      <path class="casing" d="M770,110 L792,64 L880,64 L880,176"/>
+      <line class="screen" x1="866" y1="70" x2="866" y2="170"/>
+      <!-- hub line -->
+      <path class="casing" d="M284,176 L880,176" stroke-width="1.4"/>
+    </g>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="460" rx="10"/>
+
+  <g transform="translate(20,20)">
+    <!-- stations (drawn first so the engine sits on top) -->
+    <g>
+      <line class="station" x1="790" y1="30" x2="790" y2="372"/>
+      <line class="station" x1="572" y1="30" x2="572" y2="372"/>
+      <line class="station" x1="368" y1="30" x2="368" y2="372"/>
+      <line class="station" x1="324" y1="30" x2="324" y2="372"/>
+      <line class="station" x1="286" y1="30" x2="286" y2="372"/>
+      <line class="station" x1="212" y1="30" x2="212" y2="372"/>
+    </g>
+
+    <use xlink:href="#half" href="#half"/>
+    <use xlink:href="#half" href="#half" transform="translate(0,400) scale(1,-1)"/>
+    <line class="center" x1="20" y1="200" x2="900" y2="200"/>
+
+    <!-- shafts -->
+    <line class="shaft1" x1="336" y1="190" x2="740" y2="190"/>
+    <line class="shaft2" x1="92"  y1="196" x2="296" y2="196"/>
+
+    <!-- air path (reverse flow: enters at the rear, leaves at the front) -->
+    <path class="flow" d="M930,30 C905,34 892,52 884,80 L870,140 L780,146 L600,140 L576,108 L560,80 L520,80" marker-end="url(#arr)"/>
+    <path class="exflow" d="M378,124 L286,140 L232,124 L212,40" marker-end="url(#arr2)"/>
+    <text class="flowtxt" x="912" y="20" text-anchor="end">air in</text>
+    <text class="flowtxt" x="176" y="56" text-anchor="end" style="fill:#d64545">exhaust out</text>
+
+    <!-- station badges -->
+    <g>
+      <rect class="stbadge" x="776" y="2" width="28" height="20" rx="10"/><text class="sttxt" x="790" y="16" text-anchor="middle">1</text>
+      <rect class="stbadge" x="558" y="2" width="28" height="20" rx="10"/><text class="sttxt" x="572" y="16" text-anchor="middle">2</text>
+      <rect class="stbadge" x="354" y="2" width="28" height="20" rx="10"/><text class="sttxt" x="368" y="16" text-anchor="middle">3</text>
+      <rect class="stbadge" x="306" y="2" width="22" height="20" rx="10"/><text class="sttxt" x="317" y="16" text-anchor="middle">4</text>
+      <rect class="stbadge" x="256" y="2" width="34" height="20" rx="10"/><text class="sttxt" x="273" y="16" text-anchor="middle">4.5</text>
+      <rect class="stbadge" x="198" y="2" width="28" height="20" rx="10"/><text class="sttxt" x="212" y="16" text-anchor="middle">5</text>
+    </g>
+
+    <!-- component labels -->
+    <text class="lbl" x="56"  y="392">Propeller</text>
+    <text class="lbl" x="140" y="392">Reduction</text>
+    <text class="lbl" x="140" y="406">gearbox</text>
+    <text class="lbl" x="236" y="392">Exhaust</text>
+    <text class="lbl" x="296" y="392">Power</text>
+    <text class="lbl" x="296" y="406">turbine</text>
+    <text class="lbl" x="344" y="420">Compressor</text>
+    <text class="lbl" x="344" y="434">turbine</text>
+    <text class="lbl" x="464" y="392">Reverse-flow annular combustor</text>
+    <text class="lblsm" x="464" y="406">TIT = 1410 K · λ = 2.85</text>
+    <text class="lbl" x="616" y="392">Centrifugal</text>
+    <text class="lbl" x="616" y="406">stage</text>
+    <text class="lbl" x="712" y="392">3 axial stages</text>
+    <text class="lblsm" x="712" y="406">π* = 9.2 overall</text>
+    <text class="lbl" x="836" y="392">Inlet screen</text>
+    <text class="lbl" x="836" y="406">&amp; plenum</text>
+
+    <!-- shaft legend -->
+    <line class="shaft1" x1="560" y1="428" x2="590" y2="428"/>
+    <text class="lblsm" x="598" y="432" style="text-anchor:start">gas-generator shaft (~52,600 rpm)</text>
+    <line class="shaft2" x1="760" y1="428" x2="790" y2="428"/>
+    <text class="lblsm" x="798" y="432" style="text-anchor:start">free power shaft</text>
+  </g>
+</svg>
