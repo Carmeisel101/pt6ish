@@ -1,2 +1,23 @@
 /finalreport/
+
+# Python
 .venv/
+__pycache__/
+*.py[cod]
+
+# Gas-properties program, written and deleted by the *GasProp.py wrappers on each call
+GPexe
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+
+# LaTeX build files (the .tex sources and PDFs are tracked)
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.out
